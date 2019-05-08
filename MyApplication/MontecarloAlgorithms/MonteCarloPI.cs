@@ -1,60 +1,57 @@
 ﻿/// <summary>
-/// MonteCarloPI.cs 
+/// The MonteCarloPI.cs file
 /// </summary>
 namespace MontecarloAlgorithms
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System;
 
     /// <summary>
-    /// MonteCarloPI class
+    /// The MonteCarloPI implementation
     /// </summary>
     public class MonteCarloPI
     {
         /// <summary>
-        /// Internal declaration of points dictionary
+        /// Internal declaration of Points dictionary
         /// </summary>
-        private List<MPoint> points;
+        private Random rnd;
+        public List<MPoint> Points { get { return Points; } }
 
         /// <summary>
-        /// The public declaration of points.
+        /// The MonteCarloPI constructor.
         /// </summary>
-        public List<MPoint> Points { get { return points; } }
+        public MonteCarloPI()
+        {
+            this.rnd = new Random();
+            this.Points = new List<MPoint>();
+        }
 
         /// <summary>
-        /// Use this method to generate a new point.
+        /// Method to generate a new point.
         /// </summary>
         public void GeneratePoint()
         {
             MPoint newPoint = GenerateRandomPoint();
-            this.points.Add(newPoint);
+            this.Points.Add(newPoint);
         }
 
         /// <summary>
-        /// Returns PI value
+        /// Method to generate PI.
         /// </summary>
-        /// <returns>The PI approximation</returns>
+        /// <returns></returns>
         public float GetPI()
         {
-            int circleCounter = this.points.Count(x=>x.insideCircle);
-            int rectangleCounter = this.points.Count;
+            int circleCounter = this.Points.Count(x=>x.InsideCircle);
+            int rectangleCounter = this.Points.Count;
 
             return 4.0f * circleCounter / rectangleCounter;
         }
 
         /// <summary>
-        /// Constructor
+        /// Generates a new random point.
         /// </summary>
-        public MonteCarloPI()
-        {
-            this.points = new List<MPoint>();
-        }
-
-        /// <summary>
-        /// Generates a new random point
-        /// </summary>
-        /// <returns>The random point</returns>
+        /// <returns>An instance of MPoint.</returns>
         private MPoint GenerateRandomPoint()
         {
             float x = GenerateRandomValue();
@@ -68,12 +65,11 @@ namespace MontecarloAlgorithms
         }
 
         /// <summary>
-        /// Generates a random value
+        /// Generates the random coordinates.
         /// </summary>
-        /// <returns>The random value</returns>
-        private float GenerateRandomValue()
+        /// <returns>The random value.</returns>
+        private float GenerateRandomCoordinate()
         {
-            Random rnd = new Random();
             return (float)rnd.NextDouble() - 0.5f;
         }
     }
