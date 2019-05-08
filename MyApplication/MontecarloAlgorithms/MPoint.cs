@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// The MPoint.cs file.
+/// The auxiliar MPoint file.
 /// </summary>
 namespace MontecarloAlgorithms
 {
@@ -11,17 +11,17 @@ namespace MontecarloAlgorithms
         /// <summary>
         /// The X coordinate.
         /// </summary>
-        public float X;
+        public double X;
 
         /// <summary>
         /// The Y coordinate.
         /// </summary>
-        public float Y;
+        public double Y;
 
         /// <summary>
-        /// The InsideCircle coordinate.
+        /// insideCircle value
         /// </summary>
-        public bool InsideCircle;
+        public bool insideCircle;
 
         /// <summary>
         /// Initialization of the MPoint value.
@@ -29,7 +29,7 @@ namespace MontecarloAlgorithms
         /// <param name="x">The x value.</param>
         /// <param name="y">The y value.</param>
         /// <param name="insideCircle">True if the point is inside the circle.</param>
-        public MPoint(float x, float y, bool insideCircle)
+        public MPoint(double x, double y, bool insideCircle)
         {
             this.X = x;
             this.Y = y;
